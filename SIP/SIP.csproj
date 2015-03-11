@@ -809,12 +809,15 @@
     <Content Include="Formas\Catalogos\catAperturaProgramatica.aspx" />
     <Content Include="Formas\Catalogos\catAperturaProgramaticaBeneficiario.aspx" />
     <Content Include="Formas\Catalogos\catAperturaProgramaticaUnidades.aspx" />
+    <Content Include="Formas\Catalogos\catAPprograma.aspx" />
+    <Content Include="Formas\Catalogos\catAPsubprograma.aspx" />
     <Content Include="Formas\Catalogos\catEjesPVD.aspx" />
     <Content Include="Formas\Catalogos\catFuncionalidad.aspx" />
     <Content Include="Formas\Catalogos\catGrupoBeneficiarios.aspx" />
     <Content Include="Formas\Catalogos\catModalidad.aspx" />
     <Content Include="Formas\Catalogos\catPlanesSectoriales.aspx" />
     <Content Include="Formas\Catalogos\catProgramas.aspx" />
+    <Content Include="Formas\Catalogos\catAPTipoSubprograma.aspx" />
     <Content Include="Formas\Catalogos\Ejercicios.aspx" />
     <Content Include="Formas\Catalogos\Inicio.aspx" />
     <Content Include="Formas\Catalogos\Municipios.aspx" />
@@ -966,6 +969,20 @@
     <Compile Include="Formas\Catalogos\catAperturaProgramaticaUnidades.aspx.designer.cs">
       <DependentUpon>catAperturaProgramaticaUnidades.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formas\Catalogos\catAPprograma.aspx.cs">
+      <DependentUpon>catAPprograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catAPprograma.aspx.designer.cs">
+      <DependentUpon>catAPprograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catAPsubprograma.aspx.cs">
+      <DependentUpon>catAPsubprograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catAPsubprograma.aspx.designer.cs">
+      <DependentUpon>catAPsubprograma.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formas\Catalogos\catEjesPVD.aspx.cs">
       <DependentUpon>catEjesPVD.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1007,6 +1024,13 @@
     </Compile>
     <Compile Include="Formas\Catalogos\catProgramas.aspx.designer.cs">
       <DependentUpon>catProgramas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catAPTipoSubprograma.aspx.cs">
+      <DependentUpon>catAPTipoSubprograma.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catAPTipoSubprograma.aspx.designer.cs">
+      <DependentUpon>catAPTipoSubprograma.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formas\Catalogos\Ejercicios.aspx.cs">
       <DependentUpon>Ejercicios.aspx</DependentUpon>
@@ -1313,11 +1337,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>7918</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:7918/</IISUrl>
+          <IISUrl>http://localhost:7919/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

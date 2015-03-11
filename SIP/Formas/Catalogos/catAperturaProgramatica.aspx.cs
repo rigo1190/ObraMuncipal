@@ -82,7 +82,7 @@ namespace SIP.Formas.Catalogos
                 obj = uow.AperturaProgramaticaBusinessLogic.GetByID(int.Parse(_ElId.Value));
 
 
-            obj.EjercicioId = 6;
+            obj.EjercicioId = int.Parse(Session["EjercicioId"].ToString());
             obj.Clave = txtClave.Text;
             obj.Nombre = txtNombre.Text;
 
@@ -178,11 +178,11 @@ namespace SIP.Formas.Catalogos
 
             if (_Accion.Value == "Nuevo")
             {
-                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.Clave == obj.Clave).ToList();
+                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.ParentId == obj.ParentId && p.Clave == obj.Clave).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Clave que capturo ya ha sido registrada anteriormente, verifique su información");
 
-                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.Nombre == obj.Nombre).ToList();
+                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.ParentId == obj.ParentId && p.Nombre == obj.Nombre).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Descripción que capturo ya ha sido registrada anteriormente, verifique su información");
 
@@ -197,13 +197,13 @@ namespace SIP.Formas.Catalogos
 
                 xid = int.Parse(_ElId.Value);
 
-                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.Id != xid && p.Clave == obj.Clave).ToList();
+                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.ParentId == obj.ParentId && p.Id != xid && p.Clave == obj.Clave).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Clave que capturo ya ha sido registrada anteriormente, verifique su información");
 
 
 
-                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.Id != xid && p.Nombre == obj.Nombre).ToList();
+                lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.ParentId == obj.ParentId && p.Id != xid && p.Nombre == obj.Nombre).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Descripción que capturo ya ha sido registrada anteriormente, verifique su información");
 
@@ -589,8 +589,9 @@ namespace SIP.Formas.Catalogos
                 treeMain.Nodes.Clear();
             }
 
+            int ejercicio = int.Parse(Session["EjercicioId"].ToString());
 
-            List<AperturaProgramatica> lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.ParentId == null).ToList();
+            List<AperturaProgramatica> lista = uow.AperturaProgramaticaBusinessLogic.Get(p => p.EjercicioId == ejercicio  && p.ParentId == null).ToList();
 
             foreach (AperturaProgramatica obj in lista)
             {
