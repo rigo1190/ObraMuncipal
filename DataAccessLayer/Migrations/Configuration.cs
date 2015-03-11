@@ -32,6 +32,7 @@ namespace DataAccessLayer.Migrations
 
 
             return;
+
             context.Roles.AddOrUpdate(
             
                 new Rol { Id = 1 , Clave="R001", Nombre="Desarrollador", Orden=1, EsSefiplan=true,EsDependencia=false},

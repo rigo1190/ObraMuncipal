@@ -24,10 +24,23 @@ namespace DataAccessLayer.Models
         public int? ParentId { get; set; }        
         public int EjercicioId { get; set; }
         public int? Nivel { get; set; }
+
+        public int? AperturaProgramaticaBeneficiarioId { get; set; }
+        public int? AperturaProgramaticaUnidadId { get; set; }
+
         public virtual Ejercicio Ejercicio { get; set; }        
         public virtual AperturaProgramatica Parent { get; set; }
+
+        public virtual AperturaProgramaticaBeneficiario AperturaProgramaticaBeneficiario { get; set; }
+        public virtual AperturaProgramaticaUnidad AperturaProgramaticaUnidad { get; set; } 
+
         public virtual ICollection<AperturaProgramaticaMeta> DetalleMetas { get; set; }
         public virtual ICollection<AperturaProgramatica> DetalleSubElementos { get; set; }
+
+
+        
+
+
     }
 
     public enum enumObraAccion 
