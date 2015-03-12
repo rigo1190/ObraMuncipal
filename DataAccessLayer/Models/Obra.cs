@@ -24,7 +24,7 @@ namespace DataAccessLayer.Models
         public int AperturaProgramaticaMetaId { get; set; }
         public int CantidadMetas { get; set; }
         public int CantidadBeneficiarios { get; set; }
-        public enumModalidadObra? ModalidadObra { get; set; }
+        public int ModalidadEjecucionId { get; set; }
 
         public int Status { get; set; }
 
@@ -70,7 +70,7 @@ namespace DataAccessLayer.Models
 
         public virtual Ejercicio Ejercicio { get; set; }
 
-
+        public virtual ModalidadEjecucion ModalidadEjecucion { get; set; }
         
 
     }

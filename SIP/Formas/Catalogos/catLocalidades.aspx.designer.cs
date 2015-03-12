@@ -10,7 +10,7 @@
 namespace SIP.Formas.Catalogos {
     
     
-    public partial class Municipios {
+    public partial class catLocalidades {
         
         /// <summary>
         /// divMsgSuccess control.

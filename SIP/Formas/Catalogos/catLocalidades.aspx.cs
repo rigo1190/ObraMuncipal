@@ -10,8 +10,9 @@ using System.Web.UI.WebControls;
 
 namespace SIP.Formas.Catalogos
 {
-    public partial class Municipios : System.Web.UI.Page
+    public partial class catLocalidades : System.Web.UI.Page
     {
+
         private UnitOfWork uow;
 
         protected void Page_Load(object sender, EventArgs e)
@@ -25,46 +26,6 @@ namespace SIP.Formas.Catalogos
                 ModoForma(false);
             }
         }
-
-
-
-
-        
-        
-        #region metodos
-
-        private void BindGrid()
-        {
-            uow = new UnitOfWork(Session["IdUser"].ToString());
-
-            this.grid.DataSource = uow.MunicipioBusinessLogic.Get().ToList();
-            this.grid.DataBind();
-        }
-
-        private void ModoForma(bool modoCaptura)
-        {
-
-            this.divMsg.Style.Add("display", "none");
-            this.divMsgSuccess.Style.Add("display", "none");
-
-            if (modoCaptura)
-            {
-                this.divDatos.Style.Add("display", "none");
-                this.divBtnNuevo.Style.Add("display", "none");
-                this.divCaptura.Style.Add("display", "block");
-
-            }
-            else
-            {
-                this.divDatos.Style.Add("display", "block");
-                this.divBtnNuevo.Style.Add("display", "block");
-                this.divCaptura.Style.Add("display", "none");
-            }
-
-        }
-
-
-        #endregion
 
 
         #region eventos
@@ -82,9 +43,9 @@ namespace SIP.Formas.Catalogos
             GridViewRow row = (GridViewRow)((ImageButton)sender).NamingContainer;
             _ElId.Text = grid.DataKeys[row.RowIndex].Values["Id"].ToString();
 
-            Municipio mun = uow.MunicipioBusinessLogic.GetByID(int.Parse(_ElId.Text));
-            txtClave.Value = mun.Clave;
-            txtDescripcion.Value = mun.Nombre;
+            Localidad localidad = uow.LocalidadBusinessLogic.GetByID(int.Parse(_ElId.Text));
+            txtClave.Value = localidad.Clave;
+            txtDescripcion.Value = localidad.Nombre;
 
 
             _Accion.Text = "Modificar";
@@ -99,31 +60,26 @@ namespace SIP.Formas.Catalogos
 
             if (_ElId.Text == "")
                 return;
-            Municipio obj = uow.MunicipioBusinessLogic.GetByID(int.Parse(_ElId.Text));
+            Localidad obj = uow.LocalidadBusinessLogic.GetByID(int.Parse(_ElId.Text));
 
-             
+
 
 
             uow.Errors.Clear();
             List<Obra> lista;
-            lista = uow.ObraBusinessLogic.Get(p => p.MunicipioId == obj.Id).ToList();
+            lista = uow.ObraBusinessLogic.Get(p => p.LocalidadId == obj.Id).ToList();
 
 
-            List<Localidad> listaParent;
-            listaParent = uow.LocalidadBusinessLogic.Get(p => p.MunicipioId == obj.Id).ToList();
-
-
+            
             if (lista.Count > 0)
                 uow.Errors.Add("El registro no puede eliminarse porque ya ha sido usado en el sistema");
 
 
-            if (listaParent.Count > 0)
-                uow.Errors.Add("El registro no puede eliminarse porque ya ha sido usado en el sistema");
-
+            
             //Se elimina el objeto
             if (uow.Errors.Count == 0)
             {
-                uow.MunicipioBusinessLogic.Delete(obj);
+                uow.LocalidadBusinessLogic.Delete(obj);
                 uow.SaveChanges();
                 BindGrid();
             }
@@ -153,35 +109,29 @@ namespace SIP.Formas.Catalogos
         }
 
 
-        protected void imgLocalidades_Click(object sender, ImageClickEventArgs e)
-        {
-            int id;
-            GridViewRow row = (GridViewRow)((ImageButton)sender).NamingContainer;
-
-            id = int.Parse(grid.DataKeys[row.RowIndex].Values["Id"].ToString());
-
-            Response.Redirect("catLocalidades.aspx?id=" + id);
-        }
+       
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Municipio obj;
+            Localidad obj;
 
-            List<Municipio> lista;
+            List<Localidad> lista;
 
             String mensaje = "";
 
 
             if (_Accion.Text == "Nuevo")
-                obj = new Municipio();
+                obj = new Localidad();
             else
-                obj = uow.MunicipioBusinessLogic.GetByID(int.Parse(_ElId.Text));
+                obj = uow.LocalidadBusinessLogic.GetByID(int.Parse(_ElId.Text));
 
-            
+            int idMunicipio = int.Parse(Request.QueryString["id"].ToString());
+
             obj.Clave = txtClave.Value;
             obj.Nombre = txtDescripcion.Value;
-            
+            obj.MunicipioId = idMunicipio;
+
 
 
 
@@ -190,15 +140,15 @@ namespace SIP.Formas.Catalogos
 
             if (_Accion.Text == "Nuevo")
             {
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Clave == obj.Clave).ToList();
+                lista = uow.LocalidadBusinessLogic.Get(p => p.Clave == obj.Clave).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Clave que capturo ya ha sido registrada anteriormente, verifique su información");
 
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Nombre == obj.Nombre).ToList();
+                lista = uow.LocalidadBusinessLogic.Get(p => p.Nombre == obj.Nombre).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Descripción que capturo ya ha sido registrada anteriormente, verifique su información");
 
-                uow.MunicipioBusinessLogic.Insert(obj);
+                uow.LocalidadBusinessLogic.Insert(obj);
                 mensaje = "El registro se ha  almacenado correctamente";
 
             }
@@ -209,18 +159,18 @@ namespace SIP.Formas.Catalogos
 
                 xid = int.Parse(_ElId.Text);
 
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Clave == obj.Clave && p.Id != xid).ToList();
+                lista = uow.LocalidadBusinessLogic.Get(p => p.Clave == obj.Clave && p.Id != xid).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Clave que capturo ya ha sido registrada anteriormente, verifique su información");
 
 
 
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Nombre == obj.Nombre && p.Id != xid).ToList();
+                lista = uow.LocalidadBusinessLogic.Get(p => p.Nombre == obj.Nombre && p.Id != xid).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Descripción que capturo ya ha sido registrada anteriormente, verifique su información");
 
 
-                uow.MunicipioBusinessLogic.Update(obj);
+                uow.LocalidadBusinessLogic.Update(obj);
 
 
             }
@@ -262,6 +212,43 @@ namespace SIP.Formas.Catalogos
         {
             ModoForma(false);
         }
+
+        #endregion
+
+        #region metodos
+
+        private void BindGrid()
+        {
+            uow = new UnitOfWork(Session["IdUser"].ToString());
+
+            int idMunicipio = int.Parse(Request.QueryString["id"].ToString());
+
+            this.grid.DataSource = uow.LocalidadBusinessLogic.Get(p=>p.MunicipioId == idMunicipio).ToList();
+            this.grid.DataBind();
+        }
+
+        private void ModoForma(bool modoCaptura)
+        {
+
+            this.divMsg.Style.Add("display", "none");
+            this.divMsgSuccess.Style.Add("display", "none");
+
+            if (modoCaptura)
+            {
+                this.divDatos.Style.Add("display", "none");
+                this.divBtnNuevo.Style.Add("display", "none");
+                this.divCaptura.Style.Add("display", "block");
+
+            }
+            else
+            {
+                this.divDatos.Style.Add("display", "block");
+                this.divBtnNuevo.Style.Add("display", "block");
+                this.divCaptura.Style.Add("display", "none");
+            }
+
+        }
+
 
         #endregion
 

@@ -22,7 +22,7 @@ namespace SIP.Formas.Catalogos
             if (!IsPostBack)
             {
                 BindGrid();
-
+                BindCombos();
                 ModoForma(false);
             }
         }
@@ -31,6 +31,20 @@ namespace SIP.Formas.Catalogos
 
         #region metodos
 
+        private void BindCombos()
+        {
+
+            ddlBeneficiarios.DataSource = uow.AperturaProgramaticaBeneficiarioBusinessLogic.Get().ToList();
+            ddlBeneficiarios.DataValueField = "Id";
+            ddlBeneficiarios.DataTextField = "Nombre";
+            ddlBeneficiarios.DataBind();
+            
+            ddlUnidad.DataSource = uow.AperturaProgramaticaUnidadBusinessLogic.Get().ToList();
+            ddlUnidad.DataValueField = "Id";
+            ddlUnidad.DataTextField = "Nombre";
+            ddlUnidad.DataBind();
+ 
+        }
         private void BindGrid()
         {
             uow = new UnitOfWork(Session["IdUser"].ToString());
@@ -92,7 +106,8 @@ namespace SIP.Formas.Catalogos
             AperturaProgramatica ap = uow.AperturaProgramaticaBusinessLogic.GetByID(int.Parse(_ElId.Text));
             txtClave.Value = ap.Clave;
             txtDescripcion.Value = ap.Nombre;
-
+            ddlBeneficiarios.SelectedValue = ap.AperturaProgramaticaBeneficiarioId.ToString();
+            ddlUnidad.SelectedValue = ap.AperturaProgramaticaUnidadId.ToString();
 
             _Accion.Text = "Modificar";
             ModoForma(true);
@@ -178,6 +193,8 @@ namespace SIP.Formas.Catalogos
             obj.ParentId = idPrograma;
             obj.Nivel = 3;
 
+            obj.AperturaProgramaticaBeneficiarioId = int.Parse(ddlBeneficiarios.SelectedValue);
+            obj.AperturaProgramaticaUnidadId = int.Parse(ddlUnidad.SelectedValue);
 
 
 

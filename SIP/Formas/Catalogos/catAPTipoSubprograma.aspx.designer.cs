@@ -148,6 +148,24 @@ namespace SIP.Formas.Catalogos {
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator3;
         
         /// <summary>
+        /// ddlUnidad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlUnidad;
+        
+        /// <summary>
+        /// ddlBeneficiarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlBeneficiarios;
+        
+        /// <summary>
         /// btnGuardar control.
         /// </summary>
         /// <remarks>

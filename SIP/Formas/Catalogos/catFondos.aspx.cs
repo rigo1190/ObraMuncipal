@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace SIP.Formas.Catalogos
 {
-    public partial class Municipios : System.Web.UI.Page
+    public partial class catFondos : System.Web.UI.Page
     {
         private UnitOfWork uow;
 
@@ -26,18 +26,13 @@ namespace SIP.Formas.Catalogos
             }
         }
 
-
-
-
-        
-        
         #region metodos
 
         private void BindGrid()
         {
             uow = new UnitOfWork(Session["IdUser"].ToString());
 
-            this.grid.DataSource = uow.MunicipioBusinessLogic.Get().ToList();
+            this.grid.DataSource = uow.FondoBusinessLogic.Get().ToList();
             this.grid.DataBind();
         }
 
@@ -66,7 +61,6 @@ namespace SIP.Formas.Catalogos
 
         #endregion
 
-
         #region eventos
         protected void btnNuevo_Click(object sender, EventArgs e)
         {
@@ -82,9 +76,9 @@ namespace SIP.Formas.Catalogos
             GridViewRow row = (GridViewRow)((ImageButton)sender).NamingContainer;
             _ElId.Text = grid.DataKeys[row.RowIndex].Values["Id"].ToString();
 
-            Municipio mun = uow.MunicipioBusinessLogic.GetByID(int.Parse(_ElId.Text));
-            txtClave.Value = mun.Clave;
-            txtDescripcion.Value = mun.Nombre;
+            Fondo obj = uow.FondoBusinessLogic.GetByID(int.Parse(_ElId.Text));
+            txtClave.Value = obj.Clave;
+            txtDescripcion.Value = obj.Nombre;
 
 
             _Accion.Text = "Modificar";
@@ -99,31 +93,27 @@ namespace SIP.Formas.Catalogos
 
             if (_ElId.Text == "")
                 return;
-            Municipio obj = uow.MunicipioBusinessLogic.GetByID(int.Parse(_ElId.Text));
+            Fondo obj = uow.FondoBusinessLogic.GetByID(int.Parse(_ElId.Text));
 
-             
+
 
 
             uow.Errors.Clear();
-            List<Obra> lista;
-            lista = uow.ObraBusinessLogic.Get(p => p.MunicipioId == obj.Id).ToList();
+            List<Financiamiento> lista;
+            lista = uow.FinanciamientoBusinessLogic.Get(p => p.FondoId == obj.Id).ToList();
 
 
-            List<Localidad> listaParent;
-            listaParent = uow.LocalidadBusinessLogic.Get(p => p.MunicipioId == obj.Id).ToList();
-
+            
 
             if (lista.Count > 0)
                 uow.Errors.Add("El registro no puede eliminarse porque ya ha sido usado en el sistema");
 
-
-            if (listaParent.Count > 0)
-                uow.Errors.Add("El registro no puede eliminarse porque ya ha sido usado en el sistema");
+            
 
             //Se elimina el objeto
             if (uow.Errors.Count == 0)
             {
-                uow.MunicipioBusinessLogic.Delete(obj);
+                uow.FondoBusinessLogic.Delete(obj);
                 uow.SaveChanges();
                 BindGrid();
             }
@@ -153,35 +143,26 @@ namespace SIP.Formas.Catalogos
         }
 
 
-        protected void imgLocalidades_Click(object sender, ImageClickEventArgs e)
-        {
-            int id;
-            GridViewRow row = (GridViewRow)((ImageButton)sender).NamingContainer;
-
-            id = int.Parse(grid.DataKeys[row.RowIndex].Values["Id"].ToString());
-
-            Response.Redirect("catLocalidades.aspx?id=" + id);
-        }
 
 
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
-            Municipio obj;
+            Fondo obj;
 
-            List<Municipio> lista;
+            List<Fondo> lista;
 
             String mensaje = "";
 
 
             if (_Accion.Text == "Nuevo")
-                obj = new Municipio();
+                obj = new Fondo();
             else
-                obj = uow.MunicipioBusinessLogic.GetByID(int.Parse(_ElId.Text));
+                obj = uow.FondoBusinessLogic.GetByID(int.Parse(_ElId.Text));
 
-            
+
             obj.Clave = txtClave.Value;
             obj.Nombre = txtDescripcion.Value;
-            
+            obj.EjercicioId = int.Parse(Session["EjercicioId"].ToString());
 
 
 
@@ -190,15 +171,15 @@ namespace SIP.Formas.Catalogos
 
             if (_Accion.Text == "Nuevo")
             {
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Clave == obj.Clave).ToList();
+                lista = uow.FondoBusinessLogic.Get(p => p.EjercicioId == obj.EjercicioId && p.Clave == obj.Clave).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Clave que capturo ya ha sido registrada anteriormente, verifique su información");
 
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Nombre == obj.Nombre).ToList();
+                lista = uow.FondoBusinessLogic.Get(p => p.EjercicioId == obj.EjercicioId && p.Nombre == obj.Nombre).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Descripción que capturo ya ha sido registrada anteriormente, verifique su información");
 
-                uow.MunicipioBusinessLogic.Insert(obj);
+                uow.FondoBusinessLogic.Insert(obj);
                 mensaje = "El registro se ha  almacenado correctamente";
 
             }
@@ -209,18 +190,18 @@ namespace SIP.Formas.Catalogos
 
                 xid = int.Parse(_ElId.Text);
 
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Clave == obj.Clave && p.Id != xid).ToList();
+                lista = uow.FondoBusinessLogic.Get(p => p.EjercicioId == obj.EjercicioId && p.Clave == obj.Clave && p.Id != xid).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Clave que capturo ya ha sido registrada anteriormente, verifique su información");
 
 
 
-                lista = uow.MunicipioBusinessLogic.Get(p => p.Nombre == obj.Nombre && p.Id != xid).ToList();
+                lista = uow.FondoBusinessLogic.Get(p => p.EjercicioId == obj.EjercicioId && p.Nombre == obj.Nombre && p.Id != xid).ToList();
                 if (lista.Count > 0)
                     uow.Errors.Add("La Descripción que capturo ya ha sido registrada anteriormente, verifique su información");
 
 
-                uow.MunicipioBusinessLogic.Update(obj);
+                uow.FondoBusinessLogic.Update(obj);
 
 
             }
@@ -264,6 +245,5 @@ namespace SIP.Formas.Catalogos
         }
 
         #endregion
-
     }
 }

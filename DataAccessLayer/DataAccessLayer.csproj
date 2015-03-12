@@ -55,6 +55,7 @@
     <Compile Include="Models\AperturaProgramaticaUnidad.cs" />
     <Compile Include="Models\ContratosDeObra.cs" />
     <Compile Include="Models\DependenciaEjecutora.cs" />
+    <Compile Include="Models\DependenciaNormativa.cs" />
     <Compile Include="Models\Estimaciones.cs" />
     <Compile Include="Models\EstimacionesConceptos.cs" />
     <Compile Include="Models\EstimacionesConceptosTMP.cs" />
@@ -66,6 +67,8 @@
     <Compile Include="Models\Funcionalidad.cs" />
     <Compile Include="Models\Localidad.cs" />
     <Compile Include="Models\Modalidad.cs" />
+    <Compile Include="Models\ModalidadAdjudicacion.cs" />
+    <Compile Include="Models\ModalidadEjecucion.cs" />
     <Compile Include="Models\ObraFinanciamiento.cs" />
     <Compile Include="Models\OpcionSistema.cs" />
     <Compile Include="Models\Permiso.cs" />

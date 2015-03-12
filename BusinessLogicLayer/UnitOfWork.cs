@@ -43,6 +43,11 @@ namespace BusinessLogicLayer
         private IBusinessLogic<Programa> programaBusinessLogic;
         private IBusinessLogic<GrupoBeneficiario> grupoBeneficiarioBusinessLogic;
         private IBusinessLogic<DependenciaEjecutora> dependenciaejecutoraBL;
+        private IBusinessLogic<DependenciaNormativa> dependencianormativaBL;
+
+        private IBusinessLogic<ModalidadAdjudicacion> modalidadadjudicacionBL;
+        private IBusinessLogic<ModalidadEjecucion> modalidadejecucionBL;
+
         private IBusinessLogic<Firmas> firmasBL;
 
         private IBusinessLogic<ContratosDeObra> contratosdeobraBL;
@@ -404,7 +409,44 @@ namespace BusinessLogicLayer
             }
         }
 
+        public IBusinessLogic<DependenciaNormativa> DependenciaNormativaBL
+        {
 
+            get
+            {
+                if (this.dependencianormativaBL == null)
+                {
+                    this.dependencianormativaBL = new GenericBusinessLogic<DependenciaNormativa>(contexto);
+                }
+                return this.dependencianormativaBL;
+            }
+        }
+
+
+        public IBusinessLogic<ModalidadEjecucion> ModalidadEjecucionBL
+        {
+            get
+            {
+                if (this.modalidadejecucionBL == null)
+                {
+                    this.modalidadejecucionBL = new GenericBusinessLogic<ModalidadEjecucion>(contexto);
+                }
+                return this.modalidadejecucionBL;
+            }
+        }
+
+
+        public IBusinessLogic<ModalidadAdjudicacion> ModalidadAdjudicacionBL
+        {
+            get
+            {
+                if (this.modalidadadjudicacionBL == null)
+                {
+                    this.modalidadadjudicacionBL = new GenericBusinessLogic<ModalidadAdjudicacion>(contexto);
+                }
+                return this.modalidadadjudicacionBL;
+            }
+        }
 
 
         public IBusinessLogic<Firmas> FirmasBL

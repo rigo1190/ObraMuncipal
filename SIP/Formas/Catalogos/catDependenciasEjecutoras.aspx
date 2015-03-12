@@ -1,12 +1,12 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NavegadorPrincipal.Master" AutoEventWireup="true" CodeBehind="catAPTipoSubprograma.aspx.cs" Inherits="SIP.Formas.Catalogos.catTipoSubprograma" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NavegadorPrincipal.Master" AutoEventWireup="true" CodeBehind="catDependenciasEjecutoras.aspx.cs" Inherits="SIP.Formas.Catalogos.catDependenciasEjecutoras" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  <script type="text/javascript">
+<script type="text/javascript">
 
 
 
-      function fnc_Confirmar() {
-          return confirm("¿Está seguro de eliminar el registro?");
-      }
+    function fnc_Confirmar() {
+        return confirm("¿Está seguro de eliminar el registro?");
+    }
 
 
 
@@ -14,7 +14,7 @@
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-<div class="container">
+    <div class="container">
 
     <div class="panel-footer alert alert-success" id="divMsgSuccess" style="display:none" runat="server">
                 <asp:Label ID="lblMensajeSuccess" runat="server" Text=""></asp:Label>
@@ -25,11 +25,7 @@
 
     <div id="divDatos" runat="server" class="panel panel-success">
         <div class="panel-heading">
-              <div class="row">
-                <div class="col-md-8"><h3 class="panel-title"> <asp:Label ID="txtTitulo" runat="server" Text="Subprograma"></asp:Label>   </h3></div>
-                <div class="col-md-2"> . </div>
-                <div class="col-md-2"><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catAPprograma.aspx") %>">Regresar</a></div>
-             </div>
+            <h3 class="panel-title">Dependencias Ejecutoras</h3>
         </div>
 
 
@@ -52,18 +48,6 @@
                         </ItemTemplate>                        
                     </asp:TemplateField>
                     
-                    <asp:TemplateField HeaderText="Unidad de Medida" ItemStyle-CssClass="col-md-10">
-                        <ItemTemplate>
-                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("AperturaProgramaticaUnidad.Nombre") %>'></asp:Label>
-                        </ItemTemplate>                        
-                    </asp:TemplateField>
-
-                    <asp:TemplateField HeaderText="Beneficiarios" ItemStyle-CssClass="col-md-10">
-                        <ItemTemplate>
-                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("AperturaProgramaticaBeneficiario.Nombre") %>'></asp:Label>
-                        </ItemTemplate>                        
-                    </asp:TemplateField>
-
 
 
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="col-md-.5">
@@ -89,21 +73,18 @@
 
 
         <div id="divBtnNuevo" runat="server">
-        <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="btn btn-primary"  OnClick="btnNuevo_Click" AutoPostBack="false" />
+        <asp:Button ID="btnNuevo" runat="server" Text="Nuevo" CssClass="btn btn-primary" OnClick="btnNuevo_Click" AutoPostBack="false" />
     </div>
     
-    <div class="row"> 
+    
+       <div class="row"> 
 
-    <div id="divCaptura" runat="server" class="panel panel-success">
+       <div id="divCaptura" runat="server" class="panel panel-success">
 
         
 
         <div class="panel-heading">
-              <div class="row">
-                <div class="col-md-8"><h3 class="panel-title"> <asp:Label ID="txtTituloBis" runat="server" Text="Subprograma"></asp:Label>   </h3></div>
-                <div class="col-md-2"> . </div>
-                <div class="col-md-2"><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catAPprograma.aspx") %>">Regresar</a></div>
-             </div>
+            <h3 class="panel-title">Dependencias Ejecutoras :: Registre en los campos los datos solicitados</h3>
         </div>
 
 
@@ -124,22 +105,6 @@
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="El campo Nombre es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
                 </div>
 
-
-                <div class="form-group">
-                    <label for="Unidad">Unidad de Medida</label>
-                    <asp:DropDownList ID="ddlUnidad" CssClass="form-control" runat="server" style="text-align: left; width:200px; align-items:flex-start"></asp:DropDownList>
-                </div>
-
-                <div class="form-group">
-                    <label for="Beneficiarios">Beneficiarios</label>
-                    <asp:DropDownList ID="ddlBeneficiarios" CssClass="form-control" runat="server" style="text-align: left; width:200px; align-items:flex-start"></asp:DropDownList>
-                </div>
-        
-        
-                
-
-
-
             <div class="form-group">
                     <asp:Button  CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" AutoPostBack="false" ValidationGroup="validateX" />
                     <asp:Button  CssClass="btn btn-default" Text="Cancelar" ID="btnCancelar" runat="server" OnClick="btnCancelar_Click"  AutoPostBack="false" />
@@ -158,7 +123,4 @@
 
 
 </div>
-
-
-
 </asp:Content>

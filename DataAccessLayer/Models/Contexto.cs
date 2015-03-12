@@ -98,6 +98,11 @@ namespace DataAccessLayer.Models
         public virtual DbSet<GrupoBeneficiario> GrupoBeneficiario { get; set; }
 
         public virtual DbSet<DependenciaEjecutora> DBSdependenciaEjecutora { get; set; }
+        public virtual DbSet< DependenciaNormativa> DBSdependenciaNormativa { get; set; }
+
+
+        public virtual DbSet<ModalidadEjecucion> DBSmodalidadejecucion { get; set; }
+        public virtual DbSet<ModalidadAdjudicacion> DBSmodalidadadjudiacion { get; set; }
 
         public virtual DbSet<Firmas> Firmas { get; set; }
         public virtual DbSet<ContratosDeObra> DBScontratosDeObra { get; set; }        
