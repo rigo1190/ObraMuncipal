@@ -53,6 +53,7 @@
     <Compile Include="Models\AperturaProgramaticaBeneficiario.cs" />
     <Compile Include="Models\AperturaProgramaticaMeta.cs" />
     <Compile Include="Models\AperturaProgramaticaUnidad.cs" />
+    <Compile Include="Models\ConceptosDeObra.cs" />
     <Compile Include="Models\ContratosDeObra.cs" />
     <Compile Include="Models\DependenciaEjecutora.cs" />
     <Compile Include="Models\DependenciaNormativa.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Models\GrupoBeneficiario.cs" />
     <Compile Include="Models\Eje.cs" />
     <Compile Include="Models\Funcionalidad.cs" />
+    <Compile Include="Models\GruposConceptosDeObra.cs" />
     <Compile Include="Models\Localidad.cs" />
     <Compile Include="Models\Modalidad.cs" />
     <Compile Include="Models\ModalidadAdjudicacion.cs" />
@@ -86,6 +88,7 @@
     <Compile Include="Models\ProgramasDeObrasTMP.cs" />
     <Compile Include="Models\Rol.cs" />
     <Compile Include="Models\Sector.cs" />
+    <Compile Include="Models\UnidadDeMedida.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\UsuarioRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

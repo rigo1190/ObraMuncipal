@@ -811,6 +811,9 @@
     <Content Include="Formas\Catalogos\catAperturaProgramaticaUnidades.aspx" />
     <Content Include="Formas\Catalogos\catAPprograma.aspx" />
     <Content Include="Formas\Catalogos\catAPsubprograma.aspx" />
+    <Content Include="Formas\Catalogos\catConceptosDeObra.aspx" />
+    <Content Include="Formas\Catalogos\catConceptosDeObraAdd.aspx" />
+    <Content Include="Formas\Catalogos\catConceptosDeObraGrupoAdd.aspx" />
     <Content Include="Formas\Catalogos\catDependenciasEjecutoras.aspx" />
     <Content Include="Formas\Catalogos\catDependenciasNormativas.aspx" />
     <Content Include="Formas\Catalogos\catEjesPVD.aspx" />
@@ -824,6 +827,7 @@
     <Content Include="Formas\Catalogos\catPlanesSectoriales.aspx" />
     <Content Include="Formas\Catalogos\catProgramas.aspx" />
     <Content Include="Formas\Catalogos\catAPTipoSubprograma.aspx" />
+    <Content Include="Formas\Catalogos\CatUnidadesDeMedida.aspx" />
     <Content Include="Formas\Catalogos\Ejercicios.aspx" />
     <Content Include="Formas\Catalogos\Inicio.aspx" />
     <Content Include="Formas\Catalogos\Municipios.aspx" />
@@ -989,6 +993,27 @@
     <Compile Include="Formas\Catalogos\catAPsubprograma.aspx.designer.cs">
       <DependentUpon>catAPsubprograma.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Formas\Catalogos\catConceptosDeObra.aspx.cs">
+      <DependentUpon>catConceptosDeObra.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catConceptosDeObra.aspx.designer.cs">
+      <DependentUpon>catConceptosDeObra.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catConceptosDeObraAdd.aspx.cs">
+      <DependentUpon>catConceptosDeObraAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catConceptosDeObraAdd.aspx.designer.cs">
+      <DependentUpon>catConceptosDeObraAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catConceptosDeObraGrupoAdd.aspx.cs">
+      <DependentUpon>catConceptosDeObraGrupoAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\catConceptosDeObraGrupoAdd.aspx.designer.cs">
+      <DependentUpon>catConceptosDeObraGrupoAdd.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Formas\Catalogos\catDependenciasEjecutoras.aspx.cs">
       <DependentUpon>catDependenciasEjecutoras.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -1079,6 +1104,13 @@
     </Compile>
     <Compile Include="Formas\Catalogos\catAPTipoSubprograma.aspx.designer.cs">
       <DependentUpon>catAPTipoSubprograma.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Formas\Catalogos\CatUnidadesDeMedida.aspx.cs">
+      <DependentUpon>CatUnidadesDeMedida.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Formas\Catalogos\CatUnidadesDeMedida.aspx.designer.cs">
+      <DependentUpon>CatUnidadesDeMedida.aspx</DependentUpon>
     </Compile>
     <Compile Include="Formas\Catalogos\Ejercicios.aspx.cs">
       <DependentUpon>Ejercicios.aspx</DependentUpon>

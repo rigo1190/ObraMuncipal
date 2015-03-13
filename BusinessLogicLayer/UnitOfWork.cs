@@ -44,9 +44,11 @@ namespace BusinessLogicLayer
         private IBusinessLogic<GrupoBeneficiario> grupoBeneficiarioBusinessLogic;
         private IBusinessLogic<DependenciaEjecutora> dependenciaejecutoraBL;
         private IBusinessLogic<DependenciaNormativa> dependencianormativaBL;
-
         private IBusinessLogic<ModalidadAdjudicacion> modalidadadjudicacionBL;
         private IBusinessLogic<ModalidadEjecucion> modalidadejecucionBL;
+        private IBusinessLogic<UnidadDeMedida> unidaddemedidaBL;
+        private IBusinessLogic<GruposConceptosDeObra> gruposconceptosdeobraBL;
+        private IBusinessLogic<ConceptosDeObra> conceptosdeobraBL;
 
         private IBusinessLogic<Firmas> firmasBL;
 
@@ -446,6 +448,47 @@ namespace BusinessLogicLayer
                 }
                 return this.modalidadadjudicacionBL;
             }
+        }
+
+
+        public IBusinessLogic<UnidadDeMedida> UnidadDeMedidaBL
+        {
+            get
+            {
+                if (this.unidaddemedidaBL == null)
+                {
+                    this.unidaddemedidaBL = new GenericBusinessLogic<UnidadDeMedida>(contexto);
+                }
+                return this.unidaddemedidaBL;
+            }
+        }
+
+
+        public IBusinessLogic<GruposConceptosDeObra> GruposConceptosDeObraBL
+        {
+            get
+            {
+                if (this.gruposconceptosdeobraBL == null)
+                {
+                    this.gruposconceptosdeobraBL = new GenericBusinessLogic<GruposConceptosDeObra>(contexto);
+                }
+                return this.gruposconceptosdeobraBL;
+            }
+        }
+
+
+        public IBusinessLogic<ConceptosDeObra> ConceptosDeObraBL
+        {
+
+            get
+            {
+                if (this.conceptosdeobraBL == null)
+                {
+                    this.conceptosdeobraBL = new GenericBusinessLogic<ConceptosDeObra>(contexto);
+                }
+                return this.conceptosdeobraBL;
+            }
+
         }
 
 

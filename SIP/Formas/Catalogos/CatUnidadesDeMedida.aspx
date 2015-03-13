@@ -1,28 +1,20 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NavegadorPrincipal.Master" AutoEventWireup="true" CodeBehind="Municipios.aspx.cs" Inherits="SIP.Formas.Catalogos.Municipios" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/NavegadorPrincipal.Master" AutoEventWireup="true" CodeBehind="CatUnidadesDeMedida.aspx.cs" Inherits="SIP.Formas.Catalogos.CatUnidadesDeMedida" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-      <script type="text/javascript">
-
+  <script type="text/javascript">
 
 
-          function fnc_Confirmar() {
-              return confirm("¿Está seguro de eliminar el registro?");
-          }
+
+      function fnc_Confirmar() {
+          return confirm("¿Está seguro de eliminar el registro?");
+      }
 
 
 
 
     </script>
-
-
-
-    
 </asp:Content>
-
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
-   <div class="container">
+<div class="container">
 
     <div class="panel-footer alert alert-success" id="divMsgSuccess" style="display:none" runat="server">
                 <asp:Label ID="lblMensajeSuccess" runat="server" Text=""></asp:Label>
@@ -33,7 +25,7 @@
 
     <div id="divDatos" runat="server" class="panel panel-success">
         <div class="panel-heading">
-            <h3 class="panel-title">Municipios</h3>
+            <h3 class="panel-title">Unidades de Medida</h3>
         </div>
 
 
@@ -60,7 +52,7 @@
 
                         <asp:TemplateField HeaderText="Acciones" ItemStyle-CssClass="col-md-.5">
                         <ItemTemplate>
-                            <asp:ImageButton ID="imgLocalidades" ToolTip="Subprogramas" runat="server" ImageUrl="~/img/Sub.png" OnClick="imgLocalidades_Click"/>
+                            
                             <asp:ImageButton ID="imgBtnEdit" ToolTip="Editar" runat="server" ImageUrl="~/img/Edit1.png" OnClick="imgBtnEdit_Click"/>
                             <asp:ImageButton ID="imgBtnEliminar" ToolTip="Borrar" runat="server" ImageUrl="~/img/close.png" OnClientClick="return fnc_Confirmar()" OnClick="imgBtnEliminar_Click"/>
                             
@@ -93,7 +85,7 @@
         
 
         <div class="panel-heading">
-            <h3 class="panel-title">Municipios :: Registre en los campos los datos solicitados</h3>
+            <h3 class="panel-title">Unidades de Medida  :: Registre en los campos los datos solicitados</h3>
         </div>
 
 
@@ -132,5 +124,4 @@
 
 
 </div>
-    
 </asp:Content>

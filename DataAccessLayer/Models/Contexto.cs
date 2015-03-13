@@ -104,6 +104,10 @@ namespace DataAccessLayer.Models
         public virtual DbSet<ModalidadEjecucion> DBSmodalidadejecucion { get; set; }
         public virtual DbSet<ModalidadAdjudicacion> DBSmodalidadadjudiacion { get; set; }
 
+        public virtual DbSet<UnidadDeMedida> DBSunidaddemedida { get; set; }
+        public virtual DbSet<GruposConceptosDeObra> DBSgruposconceptosdeobra { get; set; }
+        public virtual DbSet<ConceptosDeObra> DBSconceptosdeobra { get; set; }
+
         public virtual DbSet<Firmas> Firmas { get; set; }
         public virtual DbSet<ContratosDeObra> DBScontratosDeObra { get; set; }        
         public virtual DbSet<PresupuestosContratados> DBSpresupuestosContratados { get; set; }

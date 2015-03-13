@@ -155,6 +155,9 @@
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catAperturaProgramaticaBeneficiario.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span> Apertura Programática::Beneficiario</a></li>
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catAperturaProgramaticaUnidades.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span> Apertura Programática::Unidades de Medida</a></li>
                                 <li>.</li>
+                                <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catConceptosDeObra.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>Conceptos de Obra</li>
+                                <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catUnidadesDeMedida.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>Unidades de Medida</a></li>
+                                <li>.</li>
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catFuncionalidad.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>P.V.D.:  Estructura Funcional</a></li>
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catEjesPVD.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>P.V.D.: Eje </a></li>
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catPlanesSectoriales.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>P.V.D.: Planes Sectoriales</a></li>
@@ -166,11 +169,7 @@
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catDependenciasNormativas.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>Dependencias Normativas</a></li>
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catModalidadEjecucion.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>Modalidad Ejecución</a></li>
                                 <li><a href="<%=ResolveClientUrl("~/Formas/Catalogos/catModalidadAdjudicacion.aspx") %>"><span class="glyphicon glyphicon-asterisk"></span>Modalidad Adjudicación</a></li>
-                                                                
-                                <li><span class="glyphicon glyphicon-asterisk"></span>Unidad de Medida (Metas)</li>
-                                <li><span class="glyphicon glyphicon-asterisk"></span>Unidad de Medida (Conceptos)</li>
-                                <li><span class="glyphicon glyphicon-asterisk"></span>Conceptos Presupuestos</li>
-
+                                <li>.</li>
                                 <li><span class="glyphicon glyphicon-asterisk"></span>Partidas Contables</li>
                                 <li><span class="glyphicon glyphicon-asterisk"></span>Matrix de Conversión</li>
 
