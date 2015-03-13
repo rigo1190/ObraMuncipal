@@ -94,15 +94,6 @@ namespace SIP.Formas.Catalogos {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl divCaptura;
         
         /// <summary>
-        /// ddlGrupo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlGrupo;
-        
-        /// <summary>
         /// txtClave control.
         /// </summary>
         /// <remarks>

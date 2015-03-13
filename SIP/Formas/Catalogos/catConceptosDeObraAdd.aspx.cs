@@ -38,6 +38,9 @@ namespace SIP.Formas.Catalogos
 
             txtClave.Value = string.Empty;
             txtDescripcion.Value = string.Empty;
+            txtMinimo.Value = string.Empty;
+            txtMaximo.Value = string.Empty;
+
         }
         protected void imgBtnEdit_Click(object sender, ImageClickEventArgs e)
         {
@@ -50,7 +53,6 @@ namespace SIP.Formas.Catalogos
             txtMinimo.Value = obj.Minimo.ToString();
             txtMaximo.Value = obj.Maximo.ToString();
             ddlUnidad.SelectedValue = obj.UnidadDeMedidaId.ToString();
-            ddlGrupo.SelectedValue = obj.GruposConceptosDeObraId.ToString();
 
 
             _Accion.Text = "Modificar";
@@ -130,7 +132,7 @@ namespace SIP.Formas.Catalogos
             List<ConceptosDeObra> lista;
 
             String mensaje = "";
-
+            int grupo = int.Parse(Request.QueryString["grupo"].ToString());
 
             if (_Accion.Text == "Nuevo")
                 obj = new ConceptosDeObra();
@@ -138,7 +140,8 @@ namespace SIP.Formas.Catalogos
                 obj = uow.ConceptosDeObraBL.GetByID(int.Parse(_ElId.Text));
 
 
-            obj.GruposConceptosDeObraId = int.Parse(ddlGrupo.SelectedValue);
+
+            obj.GruposConceptosDeObraId = grupo;
             obj.Clave = txtClave.Value;
             obj.Nombre = txtDescripcion.Value;
             obj.UnidadDeMedidaId = int.Parse(ddlUnidad.SelectedValue);
@@ -237,7 +240,11 @@ namespace SIP.Formas.Catalogos
             uow = new UnitOfWork(Session["IdUser"].ToString());
 
             int ejercicio = int.Parse(Session["EjercicioId"].ToString());
-            this.grid.DataSource = uow.ConceptosDeObraBL.Get();
+
+            int grupo = int.Parse(Request.QueryString["grupo"].ToString());
+
+
+            this.grid.DataSource = uow.ConceptosDeObraBL.Get(p=>p.GruposConceptosDeObraId == grupo);
             this.grid.DataBind();
         }
 
@@ -245,11 +252,7 @@ namespace SIP.Formas.Catalogos
         private void BindCombos()
         {
 
-            ddlGrupo.DataSource = uow.GruposConceptosDeObraBL.Get();
-            ddlGrupo.DataValueField = "Id";
-            ddlGrupo.DataTextField = "Nombre";
-            ddlGrupo.DataBind();
-
+        
             ddlUnidad.DataSource = uow.UnidadDeMedidaBL.Get();
             ddlUnidad.DataValueField = "Id";
             ddlUnidad.DataTextField = "Nombre";

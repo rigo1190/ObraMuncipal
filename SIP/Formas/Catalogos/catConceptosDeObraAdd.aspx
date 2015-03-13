@@ -55,20 +55,20 @@
                     
                     <asp:TemplateField HeaderText="Nombre" ItemStyle-CssClass="col-md-1">
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("UnidadDeMedida.Clave") %>'></asp:Label>
+                            <asp:Label ID="Label3" runat="server" Text='<%# Bind("UnidadDeMedida.Clave") %>'></asp:Label>
                         </ItemTemplate>                        
                     </asp:TemplateField>
 
                     <asp:TemplateField HeaderText="Nombre" ItemStyle-CssClass="col-md-1">
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Minimo") %>'></asp:Label>
+                            <asp:Label ID="Label4" runat="server" Text='<%# Bind("Minimo") %>'></asp:Label>
                         </ItemTemplate>                        
                     </asp:TemplateField>
 
 
                     <asp:TemplateField HeaderText="Nombre" ItemStyle-CssClass="col-md-1">
                         <ItemTemplate>
-                            <asp:Label ID="Label2" runat="server" Text='<%# Bind("Maximo") %>'></asp:Label>
+                            <asp:Label ID="Label5" runat="server" Text='<%# Bind("Maximo") %>'></asp:Label>
                         </ItemTemplate>                        
                     </asp:TemplateField>
 
@@ -114,53 +114,70 @@
             </div>
         </div>
 
-                <div class="form-group">
-                    <label for="grupo">Agrupador</label>
-                    <asp:DropDownList ID="ddlGrupo" CssClass="form-control" runat="server" style="text-align: left; width:200px; align-items:flex-start"></asp:DropDownList>
-                </div>
 
+           <div class="row">
+                                   
+                 <div class="col-md-8">
+       
 
-                <div class="form-group"">
+                    <div class="form-group"">
                     
-                    <label for="Clave">Clave</label>
-                    <input type="text" class="input-sm required form-control" id="txtClave" runat="server" style="text-align: left; width:200px; align-items:flex-start" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtClave" ErrorMessage="El campo clave es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>
-                     
-                </div>
+                        <label for="Clave">Clave</label>
+                        <input type="text" class="input-sm required form-control" id="txtClave" runat="server" style="text-align: left; width:200px; align-items:flex-start" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtClave" ErrorMessage="El campo clave es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>
+                    
+                    </div>
+
+                     <div class="form-group">
+                        <label for="Descripcion">Descripcion</label>
+                        <input type="text" class="input-sm required form-control" id="txtDescripcion" runat="server" style="text-align: left; width:600px;  align-items:flex-start" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="El campo Nombre es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
+                    </div>
+
+
+                     <div class="form-group">
+                        <label for="Unidad">Unidad de Medida</label>
+                        <asp:DropDownList ID="ddlUnidad" CssClass="form-control" runat="server" style="text-align: left; width:200px; align-items:flex-start"></asp:DropDownList>
+                    </div>
+                 </div>
+
+               <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="minimo">Mínimo</label>
+                        <input type="text" class="input-sm required form-control" id="txtMinimo" runat="server" style="text-align: left; width:200px;  align-items:flex-start" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMinimo" ErrorMessage="El campo Mínimo es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="maximo">Máximo</label>
+                        <input type="text" class="input-sm required form-control" id="txtMaximo" runat="server" style="text-align: left; width:200px;  align-items:flex-start" />
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtMaximo" ErrorMessage="El campo Máximo es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
+                    </div>
+
+
+                    <div class="form-group">
+                            <asp:Button  CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" AutoPostBack="false" ValidationGroup="validateX" />
+                            <asp:Button  CssClass="btn btn-default" Text="Cancelar" ID="btnCancelar" runat="server" OnClick="btnCancelar_Click"  AutoPostBack="false" />
+                    </div>
+
+
+               </div>
+
+            </div>
+                
+
+
 
 
             
-                <div class="form-group">
-                    <label for="Descripcion">Descripcion</label>
-                    <input type="text" class="input-sm required form-control" id="txtDescripcion" runat="server" style="text-align: left; width:800px;  align-items:flex-start" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtDescripcion" ErrorMessage="El campo Nombre es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
-                </div>
+                
 
 
-                <div class="form-group">
-                    <label for="Unidad">Unidad de Medida</label>
-                    <asp:DropDownList ID="ddlUnidad" CssClass="form-control" runat="server" style="text-align: left; width:200px; align-items:flex-start"></asp:DropDownList>
-                </div>
+                
 
 
-                <div class="form-group">
-                    <label for="minimo">Mínimo</label>
-                    <input type="text" class="input-sm required form-control" id="txtMinimo" runat="server" style="text-align: left; width:200px;  align-items:flex-start" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMinimo" ErrorMessage="El campo Mínimo es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
-                </div>
-
-
-                <div class="form-group">
-                    <label for="maximo">Máximo</label>
-                    <input type="text" class="input-sm required form-control" id="txtMaximo" runat="server" style="text-align: left; width:200px;  align-items:flex-start" />
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtMaximo" ErrorMessage="El campo Máximo es obligatorio" ValidationGroup="validateX">*</asp:RequiredFieldValidator>                    
-                </div>
-
-
-            <div class="form-group">
-                    <asp:Button  CssClass="btn btn-primary" Text="Guardar" ID="btnGuardar" runat="server" OnClick="btnGuardar_Click" AutoPostBack="false" ValidationGroup="validateX" />
-                    <asp:Button  CssClass="btn btn-default" Text="Cancelar" ID="btnCancelar" runat="server" OnClick="btnCancelar_Click"  AutoPostBack="false" />
-            </div>
 
                 <div style="display:none" runat="server">
                     <asp:TextBox ID="_ElId" runat="server" Enable="false" BorderColor="White" BorderStyle="None" ForeColor="White"></asp:TextBox>
